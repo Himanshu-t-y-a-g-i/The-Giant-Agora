@@ -20,7 +20,8 @@ export const AllRoutes = () => {
         <div>
             <Routes>
                 <Route path="/" element={<Homepage />} />
-                <Route path={"/:product/:id"} element={<PrivateRoute><SinglePages /> </PrivateRoute>} />
+                <Route path={"/product/:id"} element={<PrivateRoute><SinglePages /> </PrivateRoute>} />
+                <Route path={"/search/:query/:id"} element={<PrivateRoute><SinglePages /> </PrivateRoute>} />
                 <Route path="/:product" element={<Products />} />
                 <Route path={"/search/:query"} element={<Search />} />
                 <Route path="/cart" element={<Cart />} />

@@ -42,9 +42,9 @@ export const Search = () => {
                 {!loading && !error && data.map(e => {
                     return (
                         <Grid mb={"30px"} borderRadius={"20px"} _hover={{ boxShadow: "0px 0px 15px 1px rgb(203, 203, 203)" }} templateColumns={"1fr 5fr"} padding={"2%"} gap={"2%"} key={e.id}>
-                            <Link to={`${e.id}`}><Image src={e.imglink} cursor="pointer" /></Link>
+                            <Link to={`/search/${query}/${e.id}`}><Image src={e.imglink} cursor="pointer" /></Link>
                             <Flex direction={"column"} >
-                                <Link to={`${e.id}`}><Text _hover={{ color: "rgb(64, 64, 64)" }} cursor={"pointer"} fontWeight={"bold"} fontSize={"2xl"}>{e.name}</Text></Link>
+                                <Link to={`/search/${query}/${e.id}`}><Text _hover={{ color: "rgb(64, 64, 64)" }} cursor={"pointer"} fontWeight={"bold"} fontSize={"2xl"}>{e.name}</Text></Link>
                                 <Text fontSize={"xl"} fontWeight={"medium"} >{e.brand}</Text>
                                 <Text fontSize={"2xl"}><s>{e.MRPx}</s> <i>{e.discountx} OFF</i> </Text>
                                 <Text fontWeight={"medium"} color={"red.600"} fontSize={"2xl"}>{e.dealpricex} </Text>
