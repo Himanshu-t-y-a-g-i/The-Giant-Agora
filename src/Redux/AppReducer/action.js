@@ -38,7 +38,7 @@ export const getProduct = (category, params) => (dispatch) => {
 
 export const getBrands = (category, query, setBrands) => {
     if (category) {
-        axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}}`).then((res) => {
+        axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}`).then((res) => {
             setBrands(res.data);
         })
         return;
