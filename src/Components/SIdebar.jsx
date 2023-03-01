@@ -2,22 +2,17 @@ import {
     Box,
     Checkbox,
     Flex,
-    FormLabel,
     Heading,
-    HStack,
-    Input,
     Radio,
     RadioGroup,
-    Select,
-    Stack,
-    Text,
     VStack,
 } from "@chakra-ui/react";
+import "./Sidebar.css"
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export const SIdebar = ({ data }) => {
+export const Sidebar = ({ data }) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const initState = searchParams.getAll("brand");
     const initOrder = searchParams.get("order");
@@ -51,7 +46,7 @@ export const SIdebar = ({ data }) => {
         setBrands(brandArr);
 
         let params = {
-            brand: urlBrands,
+            brand: urlBrands
         }
 
         order && (params.order = order)
@@ -60,60 +55,59 @@ export const SIdebar = ({ data }) => {
     }, [data, urlBrands, order]);
     return (
         <>
-            <Box
-                // marginLeft={"20px"}
-                width={"260px"}
-                // h={"400px"}
-                bg="gray.100"
-                boxShadow="lg"
-            >
-                <Heading marginTop={"20px"} fontSize="2xl" textColor={"cyan.800"}>
-                    Filter
-                </Heading>
-                <Heading
-                    textAlign={"left"}
-                    marginTop="10px"
-                    marginBottom={"10px"}
-                    fontSize={"xl"}
-                    textColor={"gray.500"}
+            <Box id="outerBox">
+                <Box
+                    overflow={"scroll"}
+                    height={"100vh"}
+                    bg="gray.100"
+                    boxShadow="lg"
+                    position={"sticky"}
+                    top={"0px"}
                 >
-                    Brands
-                </Heading>
-                {brands.length > 0 &&
-                    brands.map((e) => {
-                        return (
-                            <Flex key={Math.random()} mb="1rem" alignItems="flex-start">
-                                <Checkbox onChange={handleChange} isChecked={urlBrands.includes(e)} value={e} size={"lg"} marginLeft="20px" borderColor="blue.500">
-                                    {e}
-                                </Checkbox>
-                            </Flex>
-                        );
-                    })}
-
-                <Box width="250px" height="100vh" bg="gray.100">
-                    <Heading
-                        fontSize={"xl"}
-                        textAlign="left"
-                        textColor={"gray.500"}
-                        mb="1.5rem"
-                        marginTop={"30px"}
-                    >
-                        Sort By Price
+                    <Heading marginTop={"20px"} fontSize="2xl" textColor={"cyan.800"}>
+                        Filter
                     </Heading>
-                    <RadioGroup defaultValue={order}>
-                        <VStack spacing="24px">
-                            <Radio borderColor="blue.500" onChange={handleSortPrice} name="order" value="asc" size="lg">
-                                {/* <Text as="label" fontWeight="semibold"> */}
-                                Low to High
-                                {/* </Text> */}
-                            </Radio>
-                            <Radio borderColor="blue.500" onChange={handleSortPrice} name="order" value="desc" size="lg">
-                                {/* <Text as="label" fontWeight="semibold"> */}
-                                High to Low
-                                {/* </Text> */}
-                            </Radio>
-                        </VStack>
-                    </RadioGroup>
+                    <Box overflow={"scroll"} height={"60vh"}>
+                        <Heading
+                            textAlign={"left"}
+                            marginTop="10px"
+                            marginBottom={"10px"}
+                            fontSize={"xl"}
+                            textColor={"gray.500"}
+                        >
+                            Brands
+                        </Heading>
+                        {brands.length > 0 &&
+                            brands.map((e) => {
+                                return (
+                                    <Flex key={Math.random()} ml="20px" mb="1rem" alignItems="flex-start">
+                                        <Checkbox onChange={handleChange} isChecked={urlBrands.includes(e)} value={e} size={"lg"} borderColor="blue.500">
+                                            {e}
+                                        </Checkbox>
+                                    </Flex>
+                                );
+                            })}
+                    </Box>
+                    <Box bg="gray.100">
+                        <Heading
+                            fontSize={"xl"}
+                            textColor={"gray.500"}
+                            mb="1.5rem"
+                            marginTop={"30px"}
+                        >
+                            Sort By Price
+                        </Heading>
+                        <RadioGroup defaultValue={order}>
+                            <VStack align={"left"} ml="20px">
+                                <Radio borderColor="blue.500" onChange={handleSortPrice} name="order" value="asc" size="lg">
+                                    Low to High
+                                </Radio>
+                                <Radio borderColor="blue.500" onChange={handleSortPrice} name="order" value="desc" size="lg">
+                                    High to Low
+                                </Radio>
+                            </VStack>
+                        </RadioGroup>
+                    </Box>
                 </Box>
             </Box>
         </>

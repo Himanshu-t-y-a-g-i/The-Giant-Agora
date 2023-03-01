@@ -1,6 +1,6 @@
 
 import { Footer } from './Components/Footer';
-import Navbar from './Components/Navbar';
+import { Navbar } from './Components/Navbar';
 import Dashboard from './Dashboard_Nav/Dashboard';
 import { AllRoutes } from './Routes/AllRoutes';
 

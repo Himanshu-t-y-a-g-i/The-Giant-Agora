@@ -26,18 +26,24 @@ export const deleteCartProducts = (payload) => {
 
 export const getProduct = (category, params) => (dispatch) => {
     dispatch(productRequest())
-    console.log("Request")
+    // console.log("Request")
     axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}`, params).then((res) => {
         dispatch(getProductSuccess(res.data))
-        console.log("success", params)
+        // console.log("success", params)
     })
         .catch((err) => {
             dispatch(productFailure())
         })
 }
 
-export const getBrands = (category, setBrands) => {
-    axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}`).then((res) => {
+export const getBrands = (category, query, setBrands) => {
+    if (category) {
+        axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}}`).then((res) => {
+            setBrands(res.data);
+        })
+        return;
+    }
+    axios.get(`https://elated-lime-hippo.cyclic.app/products?q=${query}`).then((res) => {
         setBrands(res.data);
     })
 }
@@ -48,4 +54,13 @@ export const setCart = (data) => (dispatch) => {
 
 export const deleteCart = (data) => (dispatch) => {
     dispatch(deleteCartProducts(data));
+}
+
+export const searchData = (query, paramsObj) => (dispatch) => {
+    dispatch(productRequest());
+    axios.get(`https://elated-lime-hippo.cyclic.app/products?q=${query}`, paramsObj).then(res => {
+        dispatch(getProductSuccess(res.data));
+    }).catch(err => {
+        dispatch(productFailure());
+    })
 }

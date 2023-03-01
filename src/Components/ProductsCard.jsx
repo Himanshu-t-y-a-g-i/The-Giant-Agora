@@ -1,27 +1,25 @@
 import React from "react";
 import {
     Box,
-    Center,
-    useColorModeValue,
-    Heading,
     Text,
-    Stack,
     Image,
     Button,
-    Card,
     Flex,
+    Spacer,
 } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import "./ProductCard.css";
+import { Link } from "react-router-dom";
 
 export const ProductsCard = ({ id, image, price, brand, name }) => {
     return (
         <Flex
+
             spacing={4}
             alignItems="center"
             justifyContent="center"
             flexDirection="column"
         >
-            <Flex direction="column" padding={"20px"} justifyContent="space-between" height="100%">
+            <Flex padding={"7%"} direction={"column"} height={"100%"} align={"space-between"} >
                 <Box>
                     <Image
                         src={image}
@@ -30,12 +28,14 @@ export const ProductsCard = ({ id, image, price, brand, name }) => {
                     />
                 </Box>
                 <Box>
-                    {/* <Text fontWeight="semibold" marginTop={2}>
-        {name}
-      </Text> */}
-                </Box>
-                <Box>
-                    <Text fontWeight="semibold" marginTop={2}>
+                    <Text
+                        fontWeight="semibold"
+                        marginTop={2}
+                        id={"nameStyle"}
+                    >
+                        {name}
+                    </Text>
+                    <Text fontWeight="bold" marginTop={2}>
                         {brand}
                     </Text>
                 </Box>
@@ -43,20 +43,10 @@ export const ProductsCard = ({ id, image, price, brand, name }) => {
                     <Text fontWeight="semibold" marginTop={2}>
                         Price: {price}
                     </Text>
-                    <Text
-                        fontWeight="semibold"
-                        marginTop={2}
-                        maxW="200px"
-                        overflow="hidden"
-                        whiteSpace="nowrap"
-                        textOverflow="ellipsis"
-                        height="80px"
-                    >
-                        {name}
-                    </Text>
                 </Box>
-                <Box mt="auto">
-                    <Link to={`/${id}`}>
+                <Spacer />
+                <Box mt="15px">
+                    <Link to={`${id}`}>
                         <Button
                             background={"cyan.400"}
                             width={"100%"}

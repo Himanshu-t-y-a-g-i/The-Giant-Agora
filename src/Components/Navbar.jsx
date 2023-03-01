@@ -1,10 +1,25 @@
-import { Button, Input } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { Box, Button, Input } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../Redux/AuthReducer/action";
 import { SearchIcon } from "@chakra-ui/icons";
 import "./navbar.css";
-function Navbar() {
+import { useState } from "react";
+import { searchData } from "../Redux/AppReducer/action";
+import { useNavigate } from "react-router-dom"
+export const Navbar = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [searchString, setSearchString] = useState("");
+    const onSearch = () => {
+        dispatch(searchData(searchString));
+        navigate(`/search/${searchString}`);
+    }
+    const handleKeyDown = (e) => {
+        if (e.keyCode == 13) {
+            onSearch();
+        }
+    }
     const isAuth = useSelector((store) => store.authReducer.isAuth);
     return (
         <div
@@ -42,7 +57,7 @@ function Navbar() {
                     <option value="delhi">Delhi</option>
                     <option value="mumbai">Mumbai</option>
                     <option value="gujarat">Gujarat</option>
-                </select>{" "}
+                </select>
             </Link>
 
             {/* categories Section start  point */}
@@ -51,14 +66,14 @@ function Navbar() {
 
             {/* categories Section End Part */}
 
-            <Link id="searchBarr">
-                <Input type={"search"} color={"white"} />
+            <Box id="searchBarr">
+                <Input type={"search"} id="search" onKeyDown={handleKeyDown} color={"white"} onChange={(e) => setSearchString(e.target.value)} />
                 <SearchIcon bg={"#febd69"} height={"40px"} />
-            </Link>
+            </Box>
 
             {/* SearchBar Functionality */}
 
-            <Link to="/language" style={{ color: "white" }}>
+            <Link style={{ color: "white" }}>
                 Language
             </Link>
             {isAuth ? (
@@ -94,4 +109,3 @@ function Navbar() {
         </div>
     );
 }
-export default Navbar;

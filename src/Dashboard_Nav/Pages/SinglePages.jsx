@@ -16,18 +16,17 @@ import {
     SimpleGrid,
     StackDivider,
     useColorModeValue,
-    VisuallyHidden,
     List,
     ListItem,
 } from "@chakra-ui/react";
 import "./SinglePages.css";
-// import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
-import { getSingleProduct, setCart } from "../../Redux/AppReducer/action";
+import { setCart } from "../../Redux/AppReducer/action";
 import axios from "axios";
 
 export function SinglePages() {
     const { id } = useParams();
+    console.log(id)
     const [product, setProduct] = useState([]);
     const dispatch = useDispatch();
     useEffect(() => {
