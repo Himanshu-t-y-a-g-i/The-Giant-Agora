@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import Flickity from "react-flickity-component";
 import {
     Box,
-    chakra,
     Container,
     Stack,
     Text,

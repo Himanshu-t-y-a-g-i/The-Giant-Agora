@@ -7,10 +7,14 @@ import "./navbar.css";
 import { useState } from "react";
 import { searchData } from "../Redux/AppReducer/action";
 import { useNavigate } from "react-router-dom"
+import { CgShoppingCart } from "react-icons/cg";
+
 export const Navbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const cartItems = useSelector(store => store.productReducer.cart.length);
     const [searchString, setSearchString] = useState("");
+    const isAdmin = useSelector(store => store.authReducer.admin).email || false;
     const onSearch = () => {
         dispatch(searchData(searchString));
         navigate(`/search/${searchString}`);
@@ -27,7 +31,7 @@ export const Navbar = () => {
             style={{
                 display: "flex",
                 justifyContent: "space-around",
-                padding: "15px",
+                padding: "5px",
                 background: "#131921",
             }}
         >
@@ -85,25 +89,18 @@ export const Navbar = () => {
                     Login
                 </Link>
             )}
-            <Link to="https://amazonagoraadmin.netlify.app/" style={{ color: "white" }}>
-                Admin Pannel
-            </Link>
+            {
+                isAdmin && <Link to="/admin" style={{ color: "white" }}>
+                    Admin Pannel
+                </Link>
+            }
             <Link to="/returns" style={{ color: "white" }}>
                 Returns
             </Link>
 
-            <Link to="/cart" style={{ color: "white" }}>
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0tBS73GPTm5sRcq_9NrB5EPOleQM5bbEEUtn042wk4u2Fc6GcpXr8rRyfI1JjyGNR1fE&usqp=CAU"
-                    style={{
-                        height: "25px",
-                        width: "25px",
-                        marginTop: "-10px",
-                        color: "white",
-                        background: "#131921",
-                    }}
-                    alt="cart"
-                />
+            <Link id="cartLink" to="/cart" style={{ color: "white" }}>
+                <CgShoppingCart />
+                <span id="cartItems">{cartItems}</span>
                 Cart
             </Link>
         </div>

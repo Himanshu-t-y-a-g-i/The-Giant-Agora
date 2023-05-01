@@ -26,6 +26,20 @@ a {
     width: 6%;
 }
 
-/* <input type="text" placeholder="Search For Products" />
-                <button ><img src="https://cdn-icons-png.flaticon.com/512/95/95643.png"
-                    alt="glass" style={{ height: "100%", width: "100%" }} /></button> */
+#cartLink {
+    text-align: center;
+    position: relative;
+}
+
+#cartLink>:first-child {
+    width: 70%;
+    height: 2.5rem;
+}
+
+#cartItems {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    background-color: #131921;
+    text-align: center;
+}

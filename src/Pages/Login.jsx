@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { login } from '../Redux/AuthReducer/action';
+import { adminLogin, adminLoginf, login } from '../Redux/AuthReducer/action';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
@@ -24,17 +24,22 @@ export const Login = () => {
     const [email, setEmail] = useState("eve.holt@reqres.in")
     const [pass, setPass] = useState("cityslicka");
     const handleLogin = () => {
-        let data = {
+        const data = {
             email,
             password: pass
         }
-        dispatch(login(data)).then(() => {
-            if (location.state === null) {
-                navigate("/", { replace: true });
-            } else {
-                navigate(location.state, { replace: true });
-            }
-        });
+        const admin = dispatch(adminLoginf(data));
+        if (!admin) {
+            dispatch(login(data)).then(() => {
+                if (location.state === null) {
+                    navigate("/", { replace: true });
+                } else {
+                    navigate(location.state, { replace: true });
+                }
+            });
+        } else {
+            navigate("/admin")
+        }
     }
     return (
         <Flex

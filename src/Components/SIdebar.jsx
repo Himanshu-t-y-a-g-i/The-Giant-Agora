@@ -44,13 +44,10 @@ export const Sidebar = ({ data }) => {
             brandArr.push(key);
         }
         setBrands(brandArr);
-
         let params = {
             brand: urlBrands
         }
-
         order && (params.order = order)
-
         setSearchParams(params)
     }, [data, urlBrands, order]);
     return (

@@ -1,4 +1,4 @@
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT } from "./actionTypes";
+import { ADMIN_LOGIN, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT } from "./actionTypes";
 import axios from "axios"
 
 export const loginRequest = () => {
@@ -17,6 +17,10 @@ export const logOut = () => {
     return { type: LOGOUT }
 }
 
+export const adminLogin = (payload) => {
+    return { type: ADMIN_LOGIN, payload }
+}
+
 export const login = (userData) => (dispatch) => {
     dispatch(loginRequest());
     return axios.post("https://reqres.in/api/login", userData).then((res) => {
@@ -29,4 +33,30 @@ export const login = (userData) => (dispatch) => {
 
 export const logout = (dispatch) => {
     dispatch(logOut());
+}
+
+export const adminLoginf = (data) => dispatch => {
+    const adminData = [
+        {
+            email: "ranjit@gmail.com",
+            password: "12345",
+            name: "Ranjit Singh",
+            image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg"
+        }
+    ]
+    dispatch(loginRequest());
+    let isAvail = false;
+    let dataToSend = {};
+    adminData.map(e => {
+        if (data.email === e.email && data.password === e.password) {
+            isAvail = true;
+            dataToSend = e;
+        }
+    })
+    if (isAvail) {
+        dispatch(adminLogin(dataToSend));
+        return true;
+    } else {
+        return false;
+    }
 }
