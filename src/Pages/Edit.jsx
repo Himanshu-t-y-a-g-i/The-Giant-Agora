@@ -12,7 +12,6 @@ export const Edit = () => {
     useEffect(() => {
         axios.get(`https://jsonserver-revision.onrender.com/products/${params}`).then(res => setData(res.data));
     }, []);
-    console.log(data)
     if (!adminDetail.email || !adminDetail.password) {
         return <Navigate to={"/login"} />
     }

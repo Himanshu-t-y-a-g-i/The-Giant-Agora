@@ -30,7 +30,7 @@ export const Admin = () => {
                     <img src={adminDetail.image} alt="Admin image" />
                     <p>{adminDetail.name}</p>
                     <div>
-                        <p onClick={() => logout()}>Sign-Out</p>
+                        <p onClick={() => dispatch(logout())}>Sign-Out</p>
                     </div>
                 </div>
             </nav >
