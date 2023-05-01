@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams, useParams } from "react-router-dom";
 import { ProductList } from "../Components/ProductList";
-import { Sidebar } from "../Components/Sidebar";
+import { Sidebar } from "../Components/Sidebar.jsx";
 import { getBrands, getProduct } from "../Redux/AppReducer/action";
 
 export const Products = () => {
@@ -28,7 +28,7 @@ export const Products = () => {
     }
     useEffect(() => {
         dispatch(getProduct(category, paramsObj));
-        getBrands(category,"", setUrlBrands);
+        getBrands(category, "", setUrlBrands);
     }, [location.search, category]);
     return (
         <>

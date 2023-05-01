@@ -35,7 +35,7 @@ export const Admin = () => {
                 </div>
             </nav >
             <aside id="adminAside">
-
+                
             </aside>
             <main id="adminMain">
                 {loading && <div style={{ textAlign: "center", position: "absolute", top: "45vh", left: "45vw" }}>
