@@ -7,12 +7,9 @@ const Header = () => {
     useEffect(() => {
         const int = setInterval(function () {
             document.getElementById('radio' + counter).checked = true;
-            const check = document.getElementById("radio" + counter);
-            console.log(check)
             if (counter > 1) {
                 document.getElementById('radio' + (counter - 1)).checked = false;
             }
-            console.log(counter);
             counter++;
             if (counter > 4) {
                 counter = 1;

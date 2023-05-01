@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Pages } from './useWrapper'
 import { Admin } from '../Pages/Admin'
 import { PrivateRoute } from '../Components/PrivateRoute'
+import { Edit } from '../Pages/Edit'
 
 export const AllRoutes = () => {
     return (
@@ -10,6 +11,7 @@ export const AllRoutes = () => {
             <Routes>
                 <Route path="/" element={<Pages.homepage />} />
                 <Route path='/admin' element={<Admin />} />
+                <Route path='/edit/:id' element={<Edit />} />
                 <Route path={"/product/:id"} element={<PrivateRoute><Pages.singlePage /> </PrivateRoute>} />
                 <Route path={"/search/:query/:id"} element={<PrivateRoute><Pages.singlePage /> </PrivateRoute>} />
                 <Route path="/:product" element={<Pages.product />} />

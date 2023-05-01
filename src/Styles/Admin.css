@@ -5,20 +5,21 @@
         "adminNav adminNav"
         "adminAside adminMain"
         "adminFooter adminFooter";
-    grid-template-rows: auto 90vh auto;
+    /* grid-template-rows: auto 90vh auto; */
 }
 
 #adminNav {
     display: flex;
+    position: relative;
     background-color: #131921;
     align-items: center;
-    padding: 10px;
+    padding: 10px 20px;
     color: white;
     justify-content: space-between;
 }
 
 #adminNav>img {
-    width: 100px;
+    width: 150px;
 }
 
 #adminNav>div {
@@ -29,6 +30,17 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+}
+
+#adminNav>a {
+    font-size: 20px;
+    z-index: 2;
+    transition: .5s;
+}
+
+#adminNav>a:hover {
+    cursor: pointer;
+    color: #f89c35;
 }
 
 #adminNav>div>img {
@@ -50,20 +62,18 @@
     display: block;
 }
 
-/* Main */
-
 #welcomeBackground {
     font-size: 60px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
+    /* z-index: -1; */
     position: absolute;
-    top: 30vh;
     left: 0;
     right: 0;
     text-align: center;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(rgba(19, 25, 33, .4), rgb(255, 255, 255));
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .2));
 }
 
 #adminNav {
@@ -81,5 +91,26 @@
 
 #adminMain {
     grid-area: adminMain;
-    position: relative;
+}
+
+#products {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* Edit page */
+
+#edit {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+}
+
+#edit>div {
+    /* gap: 20px; */
 }
