@@ -91,7 +91,7 @@ export const Navbar = () => {
             )}
             {
                 isAdmin && <Link to="/admin" style={{ color: "white" }}>
-                    Admin Pannel
+                    Admin
                 </Link>
             }
             <Link to="/returns" style={{ color: "white" }}>

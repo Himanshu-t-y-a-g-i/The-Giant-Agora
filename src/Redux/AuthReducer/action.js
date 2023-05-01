@@ -41,7 +41,7 @@ export const adminLoginf = (data) => dispatch => {
             email: "ranjit@gmail.com",
             password: "12345",
             name: "Ranjit Singh",
-            image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg"
+            image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
         }
     ]
     dispatch(loginRequest());

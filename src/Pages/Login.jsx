@@ -21,8 +21,8 @@ export const Login = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-    const [email, setEmail] = useState("eve.holt@reqres.in")
-    const [pass, setPass] = useState("cityslicka");
+    const [email, setEmail] = useState("ranjit@gmail.com")
+    const [pass, setPass] = useState("12345");
     const handleLogin = () => {
         const data = {
             email,

@@ -1,0 +1,85 @@
+#admin {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-areas:
+        "adminNav adminNav"
+        "adminAside adminMain"
+        "adminFooter adminFooter";
+    grid-template-rows: auto 90vh auto;
+}
+
+#adminNav {
+    display: flex;
+    background-color: #131921;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    justify-content: space-between;
+}
+
+#adminNav>img {
+    width: 100px;
+}
+
+#adminNav>div {
+    display: flex;
+    width: 10em;
+    padding: 5px 10px;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+#adminNav>div>img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+#adminNav>div>div {
+    display: none;
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: #131921;
+    padding: 10px 10px;
+    top: 100%;
+}
+
+#adminNav>div:hover>div {
+    display: block;
+}
+
+/* Main */
+
+#welcomeBackground {
+    font-size: 60px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    position: absolute;
+    top: 30vh;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(rgba(19, 25, 33, .4), rgb(255, 255, 255));
+}
+
+#adminNav {
+    grid-area: adminNav;
+}
+
+#adminFooter {
+    grid-area: adminFooter;
+}
+
+#adminAside {
+    grid-area: adminAside;
+    background-color: #edf2f7;
+}
+
+#adminMain {
+    grid-area: adminMain;
+    position: relative;
+}
