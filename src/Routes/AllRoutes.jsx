@@ -17,7 +17,7 @@ export const AllRoutes = () => {
                 <Route path="/:product" element={<Pages.product />} />
                 <Route path={"/search/:query"} element={<Pages.search />} />
                 <Route path="/cart" element={<Pages.cart />} />
-                <Route path="/pay" element={<Pages.cart />} />
+                <Route path="/pay" element={<Pages.payment />} />
                 <Route path='/login' element={<Pages.login />} />
                 <Route path="*" element={<Pages.notFound />} />
             </Routes>
