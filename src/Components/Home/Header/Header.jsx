@@ -59,7 +59,7 @@ const Header = () => {
                                 <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Fashion/Event/Gateway/JanART/BTF/PCQC/M-shoes-186-116._SY116_CB615519226_.jpg" alt="Not-Found" />
                                 <p>Footwear</p>
                             </div>
-                            <Link to={"/watch"} className={style.chidFour}>
+                            <Link to={"/watches"} className={style.chidFour}>
                                 <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Fashion/Event/Gateway/JanART/BTF/PCQC/M-watch-186-116._SY116_CB615519226_.jpg" alt="Not-Found" />
                                 <p style={{ fontWeight: "lighter" }}>Watches</p>
                             </Link>
